@@ -7,6 +7,7 @@ const router = Router();
 const handleCreate = async (req, res) => {
 	try {
 		// use req.body etc to await some controller function
+		// const apiKey = req.query.key;
 		const postInit = req.body;
 		const result = await Posts.createPost(postInit);
 		// send back the result
@@ -14,7 +15,7 @@ const handleCreate = async (req, res) => {
 		// res.json({'hi': 'created'});
 	} catch (error) {
 		// or catch the error and send back an error
-		res.status(500).json({ error });
+		res.status(404).json({ error });
 	}
 }
 
@@ -27,7 +28,7 @@ const handleGetPosts = async (req, res) => {
 		// res.json({'hi': 'got posts'});
 	} catch (error) {
 		// or catch the error and send back an error
-		res.status(501).json({ error });
+		res.status(404).json({ error });
 	}
 }
 
@@ -38,7 +39,7 @@ const handleGetPost = async (req, res) => {
 		res.json(result);
 		// res.json({'hi': 'got 1'});
 	} catch (error) {
-		res.status(502).json({ error });
+		res.status(404).json({ error });
 	}
 }
 
@@ -50,7 +51,7 @@ const handleUpdate = async (req, res) => {
 		res.json(result);
 		// res.json({'hi': 'updated'});
 	} catch (error) {
-		res.status(503).json({ error });
+		res.status(404).json({ error });
 	}
 }
 
@@ -63,7 +64,7 @@ const handleDelete = async (req, res) => {
 		// res.json({'hi': 'deleted'});
 	} catch (error) {
 		// or catch the error and send back an error
-		res.status(504).json({ error });
+		res.status(404).json({ error });
 	}
 }
 

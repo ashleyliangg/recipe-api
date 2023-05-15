@@ -6,6 +6,7 @@ export const PostSchema = new Schema({
 	tags: { type: String, default: " " },
 	coverURL: { type: String, default: " " },
 	content: { type: String, default: " " }
+	// key: { type: String, required: true }
 }, {
   timestamps: true,
   toObject: { virtuals: true },
