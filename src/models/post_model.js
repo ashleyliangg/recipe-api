@@ -3,10 +3,10 @@ import mongoose, { Schema } from 'mongoose';
 // create a PostSchema with a title field
 export const PostSchema = new Schema({
   title: { type: String, required: true },
-	tags: { type: String, default: " " },
-	coverURL: { type: String, default: " " },
-	content: { type: String, default: " " }
-	// key: { type: String, required: true }
+	tags: { type: Array, default: [] },
+	coverUrl: { type: String, default: " " },
+	content: { type: String, default: " " },
+	key: { type: String, required: true }
 }, {
   timestamps: true,
   toObject: { virtuals: true },

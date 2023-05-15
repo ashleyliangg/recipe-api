@@ -1,12 +1,14 @@
 import Post from '../models/post_model';
 
-export async function createPost(postFields) {
+export async function createPost(postFields, apiKey) {
 
 	const post = new Post();
 	post.title = postFields.title;
-	post.tags = postFields.tags;
-	post.coverURL = postFields.coverURL;
+	const tags = postFields.tags;
+	post.tags = tags.split(" ");
+	post.coverUrl = postFields.coverUrl;
 	post.content = postFields.content;
+	post.key = apiKey;
 	try {
 		//await creating a post
 		const savedPost = await post.save();
@@ -16,11 +18,10 @@ export async function createPost(postFields) {
 		throw new Error(`create post error: ${error}`);
 	}
 };
-export async function getPosts() {
+export async function getPosts(apiKey) {
 	try {
 		//await finding posts
-		const allPosts = await Post.find({}, 'title tags coverUrl').sort({createdAt: 'desc'}); 
-		// await allPosts.sort({createdAt: 'asc'});
+		const allPosts = await Post.find({ key: apiKey }, 'title tags coverUrl').sort({createdAt: 'desc'}); 
 		//return post
 		return allPosts;
 	} catch (error) {
@@ -65,8 +66,9 @@ export async function updatePost(id, postFields) {
 		// const updatedPost = await Post.findByIdAndUpdate(id, postFields);
 		const post = await Post.findById(id);
 		post.title = postFields.title;
-		post.tags = postFields.tags;
-		post.coverURL = postFields.coverURL;
+		const tags = postFields.tags;
+		post.tags = tags.split(" ");
+		post.coverUrl = postFields.coverUrl;
 		post.content = postFields.content;
 		const updatedPost = post.save();
 		return updatedPost;

@@ -7,14 +7,15 @@ const router = Router();
 const handleCreate = async (req, res) => {
 	try {
 		// use req.body etc to await some controller function
-		// const apiKey = req.query.key;
+		const apiKey = req.query.key;
 		const postInit = req.body;
-		const result = await Posts.createPost(postInit);
+		const result = await Posts.createPost(postInit, apiKey);
 		// send back the result
 		res.json(result);
 		// res.json({'hi': 'created'});
 	} catch (error) {
 		// or catch the error and send back an error
+		res.json({'error': error})
 		res.status(404).json({ error });
 	}
 }
@@ -22,7 +23,8 @@ const handleCreate = async (req, res) => {
 const handleGetPosts = async (req, res) => {
 	try {
 		// use req.body etc to await some controller function
-		const result = await Posts.getPosts();
+		const apiKey = req.query.key;
+		const result = await Posts.getPosts(apiKey);
 		// send back the result
 		res.json(result);
 		// res.json({'hi': 'got posts'});
