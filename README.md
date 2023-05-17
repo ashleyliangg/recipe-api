@@ -14,10 +14,10 @@ Settings for render.com:
 ## What Worked Well
 
 ## What Didn't
-There's some lagging sometimes when you click on a post
+It sometimes lags a bit when you click on a post.
 
 ## Extra Credit
-Implemented API key and tags as an array
+Implemented API key and tags as an array.
 
 ## Screenshots
 

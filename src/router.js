@@ -12,10 +12,8 @@ const handleCreate = async (req, res) => {
 		const result = await Posts.createPost(postInit, apiKey);
 		// send back the result
 		res.json(result);
-		// res.json({'hi': 'created'});
 	} catch (error) {
 		// or catch the error and send back an error
-		res.json({'error': error})
 		res.status(404).json({ error });
 	}
 }
@@ -27,7 +25,6 @@ const handleGetPosts = async (req, res) => {
 		const result = await Posts.getPosts(apiKey);
 		// send back the result
 		res.json(result);
-		// res.json({'hi': 'got posts'});
 	} catch (error) {
 		// or catch the error and send back an error
 		res.status(404).json({ error });
@@ -39,7 +36,6 @@ const handleGetPost = async (req, res) => {
 		const id = req.params.id;
 		const result = await Posts.getPost(id);
 		res.json(result);
-		// res.json({'hi': 'got 1'});
 	} catch (error) {
 		res.status(404).json({ error });
 	}
@@ -51,7 +47,6 @@ const handleUpdate = async (req, res) => {
 		const postFields = req.body;
 		const result = await Posts.updatePost(id, postFields);
 		res.json(result);
-		// res.json({'hi': 'updated'});
 	} catch (error) {
 		res.status(404).json({ error });
 	}
@@ -63,7 +58,6 @@ const handleDelete = async (req, res) => {
 		const result = await Posts.deletePost(id);
 		// send back the result
 		res.json(result);
-		// res.json({'hi': 'deleted'});
 	} catch (error) {
 		// or catch the error and send back an error
 		res.status(404).json({ error });

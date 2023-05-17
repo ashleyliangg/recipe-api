@@ -3,6 +3,8 @@
 let postId;
 let token;
 
+let api = "?key=l_liang";
+
 const getUniqueId = () => { return Cypress._.uniqueId(Date.now().toString()); };
 const email = `${getUniqueId()}@test.com`;
 
@@ -44,7 +46,7 @@ describe('Authentication - ok to fail if you are on lab5', () => {
       url: '/api/posts',
       body: {
         title: 'authenticated test post',
-        tags: 'words',
+        tags: ['words'],
         content: 'this is a test post',
         coverUrl: 'https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif',
       },
@@ -59,7 +61,7 @@ describe('Authentication - ok to fail if you are on lab5', () => {
       headers: { authorization: token },
       body: {
         title: 'authenticated test post',
-        tags: 'words',
+        tags: ['words'],
         content: 'this is a test post',
         coverUrl: 'https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif',
       },
@@ -95,7 +97,7 @@ describe('Lab5: CRUD operations', () => {
     cy.request({
       method: 'POST',
       headers: { authorization: token },
-      url: '/api/posts',
+      url: `/api/posts${api}`,
       body:
       {
         title: 'first post',
@@ -106,13 +108,14 @@ describe('Lab5: CRUD operations', () => {
     }).then((response) => {
       expect(response.status).to.eq(200);
       postId = response.body.id;
+			// console.log(response.json)
     });
   });
   it('user retrieves a post', () => {
     cy.request({
       method: 'GET',
       headers: { authorization: token },
-      url: `/api/posts/${postId}`,
+      url: `/api/posts/${postId}${api}`,
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.title).to.eq('first post');
@@ -123,7 +126,7 @@ describe('Lab5: CRUD operations', () => {
       failOnStatusCode: false,
       method: 'GET',
       headers: { authorization: token },
-      url: '/api/posts/foobar',
+      url: `/api/posts/foobar${api}`,
     }).then((response) => {
       expect(response.status).to.eq(404);
     });
@@ -132,7 +135,7 @@ describe('Lab5: CRUD operations', () => {
     cy.request({
       method: 'PUT',
       headers: { authorization: token },
-      url: `/api/posts/${postId}`,
+      url: `/api/posts/${postId}${api}`,
       body:
       {
         title: 'updated post',
@@ -149,7 +152,7 @@ describe('Lab5: CRUD operations', () => {
     cy.request({
       method: 'DELETE',
       headers: { authorization: token },
-      url: `/api/posts/${postId}`,
+      url: `/api/posts/${postId}${api}`,
     }).then((response) => {
       expect(response.status).to.eq(200);
     });
@@ -159,7 +162,7 @@ describe('Lab5: CRUD operations', () => {
       failOnStatusCode: false,
       method: 'GET',
       headers: { authorization: token },
-      url: `/api/posts/${postId}`,
+      url: `/api/posts/${postId}${api}`,
     }).then((res) => {
       expect(res.status).to.eq(404);
     });
