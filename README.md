@@ -21,5 +21,6 @@ When a user first navigates to the site, it can be slightly laggy (it takes a co
 Implemented API key and tags as an array. Had to change both the API and the frontend to make the tag array work. I took the post.tags out into a separate function and used the mapping function to iterate through the tags array. I also error checked to make sure that none of the items in the array were empty so that empty gray bubbles wouldn't appear if the user entered too many spaces, etc.
 
 ## Screenshots
+<img width="1300" alt="image" src="https://github.com/dartmouth-cs52-23s/platform-api-ashleyliangg/assets/102703391/a804be3e-ed74-4982-b311-ac90be5c8ad8">
 
 
