@@ -1,24 +1,10 @@
-#  Platform API
+# Recipe Client
 
-* node with babel
-* expressjs
-* airbnb eslint rules
+## Overview
 
-Procfile for Heroku included
-Settings for render.com:
-* build command:  `npm install && npm run build`
-* run command:  `npm run prod`
+## Things to note
+I found that with the free version of Render, it delays api requests if I don't use it for a while (this was the note on the render site: Your free instance will spin down with inactivity, which can delay requests by 50 seconds or more.) Thus, when you first use the client, it might not seem to work properly, but you just have to wait a minute for the first post.
 
-[https://notes-app-api-vtyb.onrender.com](https://notes-app-api-vtyb.onrender.com)
+[https://recipe-api-knja.onrender.com](https://recipe-api-knja.onrender.com)
 
-## What Worked Well
-Everything works correctly. I like how you're able to separate the posts from each other using an API key even though it's not really how a real API key works. I also like how the array of tags make the tags look more like what you see on other media.
 
-## What Didn't
-When a user first navigates to the site, it can be slightly laggy (it takes a couple milliseconds from the clicking of the submit button to the home screen)
-
-## Extra Credit
-Implemented API key and tags as an array. Had to change both the API and the frontend to make the tag array work. I took the post.tags out into a separate function and used the mapping function to iterate through the tags array. I also error checked to make sure that none of the items in the array were empty so that empty gray bubbles wouldn't appear if the user entered too many spaces, etc.
-
-## Screenshots
-<img width="1300" alt="image" src="https://github.com/dartmouth-cs52-23s/platform-api-ashleyliangg/assets/102703391/a804be3e-ed74-4982-b311-ac90be5c8ad8">

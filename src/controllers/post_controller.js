@@ -84,6 +84,7 @@ export async function updatePost(id, postFields) {
 		post.tags = tags.split(" ");
 		post.coverUrl = postFields.coverUrl;
 		post.content = postFields.content;
+		post.favorite = postFields.favorite;
 		const updatedPost = post.save();
 		return updatedPost;
 	} catch (error) {
