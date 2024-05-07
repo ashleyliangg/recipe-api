@@ -22,5 +22,3 @@ Implemented API key and tags as an array. Had to change both the API and the fro
 
 ## Screenshots
 <img width="1300" alt="image" src="https://github.com/dartmouth-cs52-23s/platform-api-ashleyliangg/assets/102703391/a804be3e-ed74-4982-b311-ac90be5c8ad8">
-
-
