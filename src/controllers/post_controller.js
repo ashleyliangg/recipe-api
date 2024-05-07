@@ -21,27 +21,27 @@ export async function createPost(postFields, apiKey) {
 export async function getPosts(apiKey) {
 	try {
 		//await finding posts
-		const allPosts = await Post.find({ key: apiKey }, 'title tags coverUrl').sort({createdAt: 'desc'}); 
+		const allPosts = await Post.find({ key: apiKey }, 'title tags coverUrl favorite').sort({createdAt: 'desc'}); 
 		//return post
 		return allPosts;
 	} catch (error) {
 		throw new Error(`get all posts error: ${error}`);
 	}
 };
-export async function getFavoritePosts(apiKey) {
-	try {
-		const favPosts = [];
-		//await finding posts
-		const allPosts = await Post.find({ key: apiKey }, 'title tags coverUrl favorite').sort({createdAt: 'desc'}); 
-		allPosts.forEach(post => {
-			if (post.favorite) favPosts.push(post);
-		})
-		//return post
-		return favPosts;
-	} catch (error) {
-		throw new Error(`get favorite posts error: ${error}`);
-	}
-};
+// export async function getFavoritePosts(apiKey) {
+// 	try {
+// 		const favPosts = [];
+// 		//await finding posts
+// 		const allPosts = await Post.find({ key: apiKey }, 'title tags coverUrl favorite').sort({createdAt: 'desc'}); 
+// 		allPosts.forEach(post => {
+// 			if (post.favorite) favPosts.push(post);
+// 		})
+// 		//return post
+// 		return favPosts;
+// 	} catch (error) {
+// 		throw new Error(`get favorite posts error: ${error}`);
+// 	}
+// };
 export async function getPost(id) {
 	try {
 		//await finding one post
